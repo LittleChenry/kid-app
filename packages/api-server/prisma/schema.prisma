@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Practice {
+  id        String   @id @default(cuid())
+  grade     Int
+  score     Float
+  totalTime Int
+  problems  String
+  results   String
+  createdAt DateTime @default(now())
+}
+
+model WritingRecord {
+  id              String   @id @default(cuid())
+  character       String
+  handwritingData String
+  score           Float
+  feedback        String
+  createdAt       DateTime @default(now())
+}
+
+model Video {
+  id          String   @id @default(cuid())
+  title       String
+  fileName    String
+  filePath    String?
+  format      String
+  size        BigInt
+  duration    Float
+  status      String   @default("ready")
+  hlsUrl      String?
+  thumbnailUrl String?
+  category    String?
+  createdAt   DateTime @default(now())
+}

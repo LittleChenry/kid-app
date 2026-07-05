@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+*.db
+*.sqlite
+.turbo/
+data/
+*.log
+.smbcredentials
+挂载脚本

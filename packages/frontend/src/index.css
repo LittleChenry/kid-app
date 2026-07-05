@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-body text-gray-800 bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen;
+    overscroll-behavior: none;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  /* iOS 安全区域适配 */
+  .safe-area-top {
+    padding-top: constant(safe-area-inset-top, 1.5rem);
+    padding-top: env(safe-area-inset-top, 1.5rem);
+  }
+  .safe-area-bottom {
+    padding-bottom: constant(safe-area-inset-bottom, 1rem);
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+  .safe-area-top-bottom {
+    padding-top: constant(safe-area-inset-top, 1.5rem);
+    padding-top: env(safe-area-inset-top, 1.5rem);
+    padding-bottom: constant(safe-area-inset-bottom, 1rem);
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+}
+
+@layer components {
+  .kid-button {
+    @apply px-6 py-3 rounded-2xl font-display text-lg font-bold shadow-lg
+    active:scale-95 transition-transform duration-150
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .kid-card {
+    @apply bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-6;
+  }
+
+  .kid-input {
+    @apply w-full px-4 py-3 rounded-2xl border-2 border-gray-200
+    focus:border-kid-blue focus:outline-none transition-colors
+    text-lg;
+  }
+
+  .page-container {
+    @apply max-w-4xl mx-auto px-4 safe-area-top-bottom;
+  }
+}

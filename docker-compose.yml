@@ -1,0 +1,37 @@
+services:
+  api-server:
+    build:
+      context: .
+      dockerfile: deploy/api.Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - DATABASE_URL=file:./data/kid-app.db
+      - NODE_ENV=production
+    volumes:
+      - api-data:/app/packages/api-server/data
+    depends_on:
+      - media-server
+
+  media-server:
+    build:
+      context: .
+      dockerfile: deploy/media.Dockerfile
+    ports:
+      - "4001:4001"
+    environment:
+      - NAS_MOUNT=/mnt/nas/videos
+      - HLS_OUTPUT=/app/data/hls
+    volumes:
+      - nas-videos:/mnt/nas/videos
+      - hls-data:/app/data/hls
+    privileged: true
+
+volumes:
+  api-data:
+  nas-videos:
+    driver_opts:
+      type: cifs
+      o: "username=${NAS_USER},password=${NAS_PASS},vers=3.0"
+      device: "//${NAS_ADDRESS}/${NAS_SHARE}"
+  hls-data:
