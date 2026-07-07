@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -6,6 +7,14 @@ import Calligraphy from './pages/Calligraphy';
 import Arithmetic from './pages/Arithmetic';
 
 export default function App() {
+  useEffect(() => {
+    const el = document.getElementById('splash');
+    if (el) {
+      el.classList.add('hidden');
+      setTimeout(() => el.remove(), 500);
+    }
+  }, []);
+
   return (
     <Routes>
       <Route element={<Layout />}>

@@ -37,13 +37,29 @@ export const api = {
     playlist: (id: string) => fetch(`/media/videos/${id}/playlist`).then((r) => r.json()),
   },
   calligraphy: {
-    getCharacters: (grade?: number) =>
-      request<any[]>(`/calligraphy/characters${grade ? `/${grade}` : ''}`),
-    submit: (data: { character: string; handwritingData: string; score: number; feedback: string[] }) =>
-      request<any>('/calligraphy/submit', {
+    getCharacterCounts: () =>
+      request<{difficulty: number; _count: number}[]>('/calligraphy/characters/counts'),
+    getCharactersByDifficulty: (level: number, exclude?: string[]) => {
+      const params = exclude?.length
+        ? `?exclude=${exclude.map(e => encodeURIComponent(e)).join(',')}`
+        : '';
+      return request<any[]>(`/calligraphy/characters/difficulty/${level}${params}`);
+    },
+    getCharData: (char: string) =>
+      request<any>(`/calligraphy/characters/${encodeURIComponent(char)}`),
+    getRecentSessionChars: (difficulty: number) =>
+      request<string[]>(`/calligraphy/sessions/recent/${difficulty}`),
+    startSession: (difficulty: number) =>
+      request<any>('/calligraphy/session/start', {
         method: 'POST',
-        body: JSON.stringify(data),
+        body: JSON.stringify({ difficulty }),
       }),
-    getHistory: () => request<any[]>('/calligraphy/history'),
+    completeSession: (sessionId: string, records: any[]) =>
+      request<any>('/calligraphy/session/complete', {
+        method: 'POST',
+        body: JSON.stringify({ sessionId, records }),
+      }),
+    getSessions: () => request<any[]>('/calligraphy/sessions'),
+    getSession: (id: string) => request<any>(`/calligraphy/sessions/${id}`),
   },
 };

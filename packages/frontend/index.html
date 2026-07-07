@@ -19,9 +19,27 @@
     <link rel="apple-touch-icon" href="/icons/icon-180x180.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet" /></noscript>
+    <style>
+      #splash {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: linear-gradient(135deg, #eff6ff, #f3e8ff);
+        font-family: "ZCOOL KuaiLe", cursive, sans-serif;
+        transition: opacity 0.4s ease;
+      }
+      #splash.hidden { opacity: 0; pointer-events: none; }
+      #splash h1 { font-size: 42px; color: #4FC3F7; margin: 0; }
+      #splash p { font-size: 16px; color: #94a3b8; margin-top: 8px; }
+    </style>
   </head>
   <body>
+    <div id="splash"><h1>宝贝乐园</h1><p>加载中...</p></div>
     <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

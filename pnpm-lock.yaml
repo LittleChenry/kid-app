@@ -32,6 +32,21 @@ importers:
       '@prisma/client':
         specifier: ^5.14.0
         version: 5.22.0(prisma@5.22.0)
+      cnchar:
+        specifier: ^3.2.6
+        version: 3.2.6
+      cnchar-explain:
+        specifier: ^3.2.6
+        version: 3.2.6
+      cnchar-radical:
+        specifier: ^3.2.6
+        version: 3.2.6
+      cnchar-words:
+        specifier: ^3.2.6
+        version: 3.2.6
+      hanzi-writer-data:
+        specifier: ^2.0.1
+        version: 2.0.1
       reflect-metadata:
         specifier: ^0.2.0
         version: 0.2.2
@@ -45,9 +60,15 @@ importers:
       '@nestjs/schematics':
         specifier: ^10.1.0
         version: 10.2.3(chokidar@3.6.0)(typescript@5.9.3)
+      '@types/express':
+        specifier: ^4.17.25
+        version: 4.17.25
       '@types/node':
         specifier: ^20.12.0
         version: 20.19.43
+      express:
+        specifier: ^4.22.2
+        version: 4.22.2
       prisma:
         specifier: ^5.14.0
         version: 5.22.0
@@ -66,6 +87,12 @@ importers:
       '@tensorflow/tfjs':
         specifier: ^4.20.0
         version: 4.22.0(seedrandom@3.0.5)
+      hanzi-writer:
+        specifier: ^3.7.3
+        version: 3.7.3
+      hanzi-writer-data:
+        specifier: ^2.0.1
+        version: 2.0.1
       hls.js:
         specifier: ^1.5.0
         version: 1.6.16
@@ -1247,6 +1274,21 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
 
+  cnchar-explain@3.2.6:
+    resolution: {integrity: sha512-nPUeeBIizArPdiWzvRXZJl0JQikD5C5V4TYJFT1gVWHQKvT4O4gOAn+tCLapmZu4yJ6evWIaPvsV6V9Dh3c9EQ==}
+
+  cnchar-radical@3.2.6:
+    resolution: {integrity: sha512-c9d9DpYoLe6zlHewrwVgfcBVTeo9LuFT7KBICeIKIxggifBCLoOaYz4jkZuh1dz6j5h9Fz6rOrrA9YnXbUBLDw==}
+
+  cnchar-types@3.2.6:
+    resolution: {integrity: sha512-LGU2ss7KcsI1Psme73+jffUX0ZDuChr6P9Rj2j8lynJHStklNpoC/+kheKSSUcXQ1u2KNvZt1Shs/5efcihHkg==}
+
+  cnchar-words@3.2.6:
+    resolution: {integrity: sha512-g0FPLbaUaWxvUH/L2dHsQiWqvghwtfRWP+yCGDLWijza2MT6ET8GP8+dNbqYVmnSU02yUTlR7X1sUY5pckzL0Q==}
+
+  cnchar@3.2.6:
+    resolution: {integrity: sha512-7Up5ALAkoOTAHlRMN0B7VgrrRsp6+trgFV0M7xSsZ0TwnnBfW68gXClcE9Oz8sTOEu+zqGOZjBhlHNzPIBckDA==}
+
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
@@ -1620,6 +1662,12 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  hanzi-writer-data@2.0.1:
+    resolution: {integrity: sha512-nbQwM+MaryGoq7pBMIZLCd3lFq03nXuJuwku1+6UbjL58uU+9OULVcMkoNvNuJSoIV7f1bbPRfD4D/LQa5S7qg==}
+
+  hanzi-writer@3.7.3:
+    resolution: {integrity: sha512-fdOFrb1cXWL/pV/oplJkcdziCvjJzhhf+qoIBm5IpVGxPBZEu4eLB6ZG5RJDbKXyNbNlyx8oIpa3XrcUBcSXpg==}
 
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -3737,6 +3785,24 @@ snapshots:
 
   clone@1.0.4: {}
 
+  cnchar-explain@3.2.6:
+    dependencies:
+      cnchar-types: 3.2.6
+
+  cnchar-radical@3.2.6:
+    dependencies:
+      cnchar-types: 3.2.6
+
+  cnchar-types@3.2.6: {}
+
+  cnchar-words@3.2.6:
+    dependencies:
+      cnchar-types: 3.2.6
+
+  cnchar@3.2.6:
+    dependencies:
+      cnchar-types: 3.2.6
+
   color-convert@2.0.1:
     dependencies:
       color-name: 1.1.4
@@ -4200,6 +4266,10 @@ snapshots:
   gopd@1.2.0: {}
 
   graceful-fs@4.2.11: {}
+
+  hanzi-writer-data@2.0.1: {}
+
+  hanzi-writer@3.7.3: {}
 
   has-flag@4.0.0: {}
 

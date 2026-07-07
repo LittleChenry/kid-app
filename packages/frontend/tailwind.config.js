@@ -26,6 +26,7 @@ export default {
       fontFamily: {
         display: ['"ZCOOL KuaiLe"', 'cursive', 'sans-serif'],
         body: ['"Noto Sans SC"', 'sans-serif'],
+        kai: ['KaiTi', 'STKaiti', '"AR PL UKai CN"', 'serif'],
       },
       borderRadius: {
         '2xl': '1rem',
